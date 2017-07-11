@@ -1,0 +1,28 @@
+{
+  "name": "pixpcodec",
+  "version": "0.1.0",
+  "description": "A starting point to create ES6 module for browser",
+  "main": "src/PixpCodec.js",
+  "repository": "jonathanlurie/PixpCodecJS",
+  "moduleName": "pixpipe",
+  "moduleFormat": "umd",
+  "moduleBuildDir": "dist",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "build-min": "npm run build && printf \"// Build date: $(date '+%Y-%m%-dT%H:%M:%S')\n\n\" > dist/pixpcodec.min.js && cat header.txt >> dist/pixpcodec.min.js && google-closure-compiler-js dist/pixpcodec.js >> dist/pixpcodec.min.js",
+    "doc": "documentation src/pixpcodec.js -o ./doc/ -f html"
+  },
+  "author": "Jonathan Lurie",
+  "license": "MIT",
+  "devDependencies": {
+    "documentation": "^3.0.4",
+    "google-closure-compiler-js": "^20170218.0.0",
+    "gulp": "^3.9.1",
+    "gulp-rollup": "^2.11.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "rollup": "^0.36.4",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^2.0.0"
+  }
+}

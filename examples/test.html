@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>Test</title>
+</head>
+<body>
+  <!-- importing the automatically build module -->
+  <script src="../dist/pixpcodec.js"></script>
+
+  <p>Open Javascript console.</p>
+
+  <script>
+
+    // --------------- ENCODING PART ---------------------------
+
+    // the foo object is part of our ES6MOD module
+    var encoder = new pixpipe.PixpEncoder();
+    
+    encoder.setStudyMetadata({
+      studyManager: "john doe",
+      studyYear: 2017
+    })
+    
+    encoder.addBlock(
+      new Uint16Array([11, 12, 13, 14, 15]), // data
+      { // metadata
+        patientID: "001",
+        patientGender: "m"
+      }
+    )
+    
+    // the final blob is what we want to convert into a file or into an arrayBuffer
+    var blob = encoder.blocksToBlob();
+    
+    // --------------- DECODING PART ---------------------------
+    
+    var decoder = new pixpipe.PixpDecoder();
+    decoder.blobToBlocks( blob );
+
+
+  </script>
+
+</body>
+</html>
